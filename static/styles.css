@@ -1,0 +1,302 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* --- VARIABEL TEMA --- */
+:root {
+    --font-family: 'Inter', sans-serif;
+    --border-radius: 0.5rem; /* 8px */
+
+    /* Tema Terang (Default) */
+    --bg-color: #f6f8fa;
+    --text-primary: #24292f;
+    --text-secondary: #57606a;
+    --header-bg: rgba(255, 255, 255, 0.7);
+    --card-bg: #ffffff;
+    --border-color: #d0d7de;
+    --link-color: #0969da;
+    --link-hover: #0366d6;
+    --input-bg: #f6f8fa;
+    --input-focus-border: #0969da;
+    --ring-color: #0969da;
+    --toggle-bg-light: #d0ebff;
+    --toggle-bg-dark: #24292e;
+    --toggle-slider-bg: transparent;
+    --sun-color: #ffc107;
+    --moon-color: #f0f0f0;
+    --cloud-color: #e0f7fa;
+    --star-color: #ffffff;
+    --shadow-color: rgba(140, 149, 159, 0.2);
+}
+
+body.dark-theme {
+    /* Perubahan untuk Tema Gelap */
+    --bg-color: #0d1117;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --header-bg: rgba(13, 17, 23, 0.7);
+    --card-bg: #161b22;
+    --border-color: #30363d;
+    --link-color: #58a6ff;
+    --link-hover: #79c0ff;
+    --input-bg: #0d1117;
+    --input-focus-border: #58a6ff;
+    --ring-color: #58a6ff;
+    --toggle-bg-light: #24292e;
+    --toggle-bg-dark: #24292e;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* --- LAYOUT UTAMA DENGAN CSS GRID --- */
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    margin: 0;
+}
+.site-header, .site-footer {
+    width: 100%;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.site-header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+main { grid-row: 2 / 3; }
+.site-footer {
+    background-color: var(--header-bg);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-secondary);
+}
+main.layout-initial { display: grid; place-items: center; }
+
+/* --- ANIMASI --- */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.results-grid { animation: fadeIn 0.5s ease-out forwards; }
+.user-item { transition: background-color 0.2s ease, padding-left 0.2s ease; }
+.user-item:hover { background-color: rgba(128, 128, 128, 0.1); padding-left: 8px; }
+
+/* --- LOGO GITHUB --- */
+.github-logo {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+.github-logo:hover {
+    color: var(--link-color);
+}
+
+/* --- PENGALIH TEMA BARU --- */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+.toggle-container {
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: var(--toggle-bg-light);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+body.dark-theme .toggle-container {
+    background-color: var(--toggle-bg-dark);
+}
+.toggle-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    pointer-events: none;
+}
+.toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    background: linear-gradient(135deg, #f9f9f9, #eee);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sun-color);
+    font-size: 1.2em;
+}
+body.dark-theme .toggle-slider {
+    transform: translateX(30px);
+    background: linear-gradient(135deg, #333, #555);
+    color: var(--moon-color);
+}
+.sun, .moon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+.moon {
+    opacity: 0;
+    color: var(--moon-color);
+}
+body.dark-theme .sun {
+    opacity: 0;
+}
+body.dark-theme .moon {
+    opacity: 1;
+}
+.clouds {
+    position: absolute;
+    top: 5px;
+    left: -15px;
+    width: 90px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+body.dark-theme .clouds {
+    opacity: 0;
+}
+.cloud {
+    background-color: var(--cloud-color);
+    border-radius: 10px;
+    height: 100%;
+}
+.cloud1 { width: 25px; }
+.cloud2 { width: 35px; transform: translateY(3px); }
+
+.stars {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 40px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+body.dark-theme .stars {
+    opacity: 1;
+}
+.star {
+    background-color: var(--star-color);
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+}
+.star1 { transform: translateY(-2px); }
+.star3 { transform: translateY(2px); }
+
+/* --- KARTU & FILTER --- */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+    transition: all 0.3s ease;
+    min-height: 300px; /* Tinggi minimum agar ukuran tetap */
+}
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.filter-group {
+    position: relative;
+    flex-grow: 1;
+    min-width: 120px;
+}
+.filter-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+.filter-input, .filter-select {
+    width: 100%;
+    padding: 0.5rem 0.75rem 0.5rem 2.25rem; /* Padding untuk ikon */
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.filter-input::placeholder { color: var(--text-secondary); }
+.filter-input:focus, .filter-select:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px var(--ring-color);
+}
+.filter-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+body.dark-theme .filter-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238b949e' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* --- DAFTAR PENGGUNA --- */
+.user-list {
+    list-style: none;
+    padding-left: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    height: 200px; /* Diubah dari max-height agar tinggi area list tetap konsisten */
+}
+.card-footer-text { color: var(--text-secondary); }
+a { color: var(--link-color); text-decoration: none; transition: color 0.2s ease; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+.no-results-message {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-secondary);
+    background-color: rgba(128, 128, 128, 0.05);
+    border-radius: var(--border-radius);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- SCROLLBAR KUSTOM --- */
+.custom-scrollbar::-webkit-scrollbar { width: 8px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* --- PERBAIKAN WARNA TEKS INPUT USERNAME PADA DARK MODE --- */
+body.dark-theme input[name="username"] {
+    color: #000000; /* Diubah menjadi hitam agar kontras dan mudah dibaca */
+}

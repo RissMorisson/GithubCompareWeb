@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Follower Comparator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body class="antialiased">
+    <header class="site-header">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <div class="flex-1">
+          <a
+            href="https://github.com/RissMorisson"
+            target="_blank"
+            class="github-logo"
+          >
+            <i class="fab fa-github fa-2x"></i>
+          </a>
+        </div>
+        <h1 class="text-2xl font-bold text-center flex-1">
+          GitHub Follower Comparator
+        </h1>
+        <div class="flex-1 flex justify-end">
+          <label class="theme-switcher">
+            <input type="checkbox" id="theme-toggle" class="hidden" />
+            <div class="toggle-container">
+              <div class="toggle-track">
+                <div id="theme-toggle-slider" class="toggle-slider">
+                  <div class="sun"><i class="fas fa-sun"></i></div>
+                  <div class="moon"><i class="fas fa-moon"></i></div>
+                </div>
+                <div class="clouds">
+                  <div class="cloud cloud1"></div>
+                  <div class="cloud cloud2"></div>
+                </div>
+                <div class="stars">
+                  <div class="star star1"></div>
+                  <div class="star star2"></div>
+                  <div class="star star3"></div>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main
+      id="main-content"
+      class="container mx-auto p-4 {% if not username %}layout-initial{% endif %}"
+    >
+      <div class="content-wrapper">
+        <form method="POST" class="mb-6 search-form">
+          <div class="flex justify-center w-full max-w-lg mx-auto">
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter GitHub Username"
+              class="p-2 border rounded-l-md w-full focus:outline-none focus:ring-2"
+              value="{{ username or '' }}"
+            />
+            <button
+              type="submit"
+              class="bg-blue-600 text-white p-2 px-4 rounded-r-md hover:bg-blue-700 transition duration-300 ease-in-out"
+            >
+              Check
+            </button>
+          </div>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %}
+        <div class="messages-container w-full max-w-lg mx-auto">
+          {% for category, message in messages %}
+          <div
+            class="mb-4 p-3 text-white rounded text-center shadow-lg {% if category == 'error' %}bg-red-500{% else %}bg-green-500{% endif %}"
+          >
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %} {% endwith %} {% if username %}
+        <div class="results-grid grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          {% for card_data in [ ('followers', 'Followers', followers,
+          follower_count), ('following', 'Following', following,
+          following_count), ('notFollowingBack', 'Not Following You Back',
+          not_following_back, not_following_back_count), ('notFollowedBack',
+          'You Don’t Follow Back', not_followed_back, not_followed_back_count) ]
+          %} {% set id_prefix, title, users, total = card_data %}
+          <div class="card">
+            <h2 class="text-xl font-semibold mb-3">{{ title }}</h2>
+            <div class="filter-controls">
+              <div class="filter-group">
+                <i class="fas fa-search filter-icon"></i>
+                <input
+                  type="text"
+                  id="{{ id_prefix }}-search"
+                  class="filter-input"
+                  placeholder="Search user..."
+                />
+              </div>
+              <div class="filter-group">
+                <i class="fas fa-ruler-horizontal filter-icon"></i>
+                <select id="{{ id_prefix }}-length" class="filter-select">
+                  <option value="all">All Lengths</option>
+                  <option value="<5">&lt; 5 chars</option>
+                  <option value="5-10">5-10 chars</option>
+                  <option value=">10">&gt; 10 chars</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <i class="fas fa-sort-alpha-down filter-icon"></i>
+                <select id="{{ id_prefix }}-range" class="filter-select">
+                  <option value="all">A-Z</option>
+                  <option value="A-E">A-E</option>
+                  <option value="F-J">F-J</option>
+                  <option value="K-O">K-O</option>
+                  <option value="P-T">P-T</option>
+                  <option value="U-Z">U-Z</option>
+                </select>
+              </div>
+            </div>
+            <ul
+              id="{{ id_prefix }}-list"
+              class="user-list custom-scrollbar mt-3"
+            >
+              {% for user in users %}
+              <li class="user-item mb-1">
+                <a href="https://github.com/{{ user }}" target="_blank"
+                  >{{ user }}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+            <p id="{{ id_prefix }}-total" class="mt-2 card-footer-text">
+              Total: {{ total }}
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 GitHub Follower Comparator. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
