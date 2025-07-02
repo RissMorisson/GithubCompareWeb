@@ -14,4 +14,5 @@ A simple web application designed to help you compare followers and following li
 * **Identify Non-Following Back:** Discover users who follow you but you do not follow back.
 * **Interactive Filtering & Search:** Filter user lists by username length or alphabetical range for easier navigation.
 * **Responsive UI:** A user-friendly interface with real-time search functionality and a dark/light theme toggle.
+* **Comprehensive Statistics:** Get quick counts of total followers, total following, non-followers back, and non-following back.
 
