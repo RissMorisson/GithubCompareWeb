@@ -12,3 +12,5 @@ A simple web application designed to help you compare followers and following li
 * **GitHub User Search:** Enter any GitHub username to get an instant analysis of their followers and following.
 * **Identify Non-Followers Back:** Clearly see a list of users you follow who do not follow you in return.
 * **Identify Non-Following Back:** Discover users who follow you but you do not follow back.
+* **Interactive Filtering & Search:** Filter user lists by username length or alphabetical range for easier navigation.
+
