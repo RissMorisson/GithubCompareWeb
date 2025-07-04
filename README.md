@@ -23,3 +23,5 @@ You can access the deployed application here:
 * **Comprehensive Statistics:** Get quick counts of total followers, total following, non-followers back, and non-following back.
 
 <img height="100px" width="100%" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHh4aDhsMHF6dmI4b3pybWR2bWlhdDJ2dXI0bzBjanAxaDdtZzdzZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TIj8cbzWYKnE9ul3ab/giphy.gif"  />
+
+## Technologies Used
