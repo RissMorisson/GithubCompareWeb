@@ -21,3 +21,4 @@ You can access the deployed application here:
 ## Technologies Used
 
 * **Backend:**
+    * [Python](https://www.python.org/)
