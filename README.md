@@ -23,3 +23,4 @@ You can access the deployed application here:
 * **Backend:**
     * [Python](https://www.python.org/)
     * [Flask](https://flask.palletsprojects.com/) - Web framework for Python.
+    * [Requests](https://requests.readthedocs.io/en/latest/) - For making HTTP requests to the GitHub API.
