@@ -24,3 +24,4 @@ You can access the deployed application here:
     * [Python](https://www.python.org/)
     * [Flask](https://flask.palletsprojects.com/) - Web framework for Python.
     * [Requests](https://requests.readthedocs.io/en/latest/) - For making HTTP requests to the GitHub API.
+    * [python-dotenv](https://pypi.org/project/python-dotenv/) - For loading environment variables from a `.env` file.
