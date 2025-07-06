@@ -26,3 +26,5 @@ You can access the deployed application here:
     * [Requests](https://requests.readthedocs.io/en/latest/) - For making HTTP requests to the GitHub API.
     * [python-dotenv](https://pypi.org/project/python-dotenv/) - For loading environment variables from a `.env` file.
     * [Gunicorn](https://gunicorn.org/) - A production-ready WSGI HTTP Server for Unix.
+
+* **Frontend:**
