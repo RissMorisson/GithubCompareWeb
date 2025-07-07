@@ -28,3 +28,7 @@ You can access the deployed application here:
     * [Gunicorn](https://gunicorn.org/) - A production-ready WSGI HTTP Server for Unix.
 
 * **Frontend:**
+    * [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
+    * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) (with [Tailwind CSS](https://tailwindcss.com/)) - For utility-first styling.
+    * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - For interactive UI elements and client-side logic.
+    * [Font Awesome](https://fontawesome.com/) - For icons.
