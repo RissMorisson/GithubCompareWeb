@@ -32,3 +32,7 @@ You can access the deployed application here:
     * [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) (with [Tailwind CSS](https://tailwindcss.com/)) - For utility-first styling.
     * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - For interactive UI elements and client-side logic.
     * [Font Awesome](https://fontawesome.com/) - For icons.
+
+* **Deployment:**
+    * [Vercel](https://vercel.com/)
+    * [GitHub](https://github.com/) - Version control and hosting the repository.
