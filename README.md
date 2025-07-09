@@ -36,3 +36,5 @@ You can access the deployed application here:
 * **Deployment:**
     * [Vercel](https://vercel.com/)
     * [GitHub](https://github.com/) - Version control and hosting the repository.
+
+## Getting Started
