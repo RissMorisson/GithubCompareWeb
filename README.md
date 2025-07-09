@@ -40,3 +40,5 @@ You can access the deployed application here:
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
