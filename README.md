@@ -38,3 +38,5 @@ You can access the deployed application here:
     * [GitHub](https://github.com/) - Version control and hosting the repository.
 
 ## Getting Started
+
+To get a local copy up and running, follow these simple steps.
