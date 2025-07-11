@@ -45,3 +45,5 @@ To get a local copy up and running, follow these simple steps.
 
 * [Python 3.x](https://www.python.org/downloads/) installed on your system.
 * [Git](https://git-scm.com/downloads) installed.
+
+### Installation and Local Setup
