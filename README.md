@@ -98,19 +98,18 @@ To get a local copy up and running, follow these simple steps.
 To maintain a clean and organized codebase, the project follows this structure:
 
 ```bash
-GitHubFollowerComparator/
+GitHubCompareWeb/
 ├── .env
 ├── .gitignore
 ├── app.py
-├── Procfile
+├── LICENSE
 ├── requirements.txt
 ├── static/
 │   ├── styles.css
-│   ├── script.js
-│   └── assets/
-│       └── screenshot-comparator.png
+│   └── script.js
+│   
 └── templates/
-└── index.html
+    └── index.html
 ```
 
 ## Contributing
