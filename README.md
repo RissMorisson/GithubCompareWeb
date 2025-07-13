@@ -47,3 +47,91 @@ To get a local copy up and running, follow these simple steps.
 * [Git](https://git-scm.com/downloads) installed.
 
 ### Installation and Local Setup
+
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/RissMorisson/GitHubFollowerComparator.git](https://github.com/RissMorisson/GitHubFollowerComparator.git)
+    cd GitHubFollowerComparator
+    ```
+
+2.  **Create a Virtual Environment (Recommended):**
+    ```bash
+    python -m venv venv
+    # Activate the virtual environment:
+    # On Windows:
+    # venv\Scripts\activate
+    # On macOS/Linux:
+    # source venv/bin/activate
+    ```
+
+3.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Configure Environment Variables:**
+    This application requires a GitHub Personal Access Token to fetch data from the GitHub API.
+
+    * Create a new file named `.env` in the root directory of your project.
+    * Obtain your GitHub Personal Access Token. Ensure the token has at least the `read:user` scope to access public user data. You can generate one from your [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens).
+    * Add the following line to your `.env` file, replacing `YOUR_GITHUB_TOKEN` with your actual token:
+        ```dotenv
+        GITHUB_TOKEN=YOUR_GITHUB_TOKEN
+        ```
+    *Note: The `.env` file is already listed in your `.gitignore` and will not be committed to your public repository.*
+
+5.  **Run the Flask Application:**
+    You can run the application using Flask's development server:
+    ```bash
+    flask run
+    ```
+    Or, for a more robust local setup (closer to production), use Gunicorn:
+    ```bash
+    gunicorn app:app
+    ```
+
+6.  **Access the Application:**
+    Open your web browser and navigate to `http://127.0.0.1:5000` (or the port indicated by Flask).
+
+## Project Structure
+
+To maintain a clean and organized codebase, the project follows this structure:
+
+```bash
+GitHubFollowerComparator/
+├── .env
+├── .gitignore
+├── app.py
+├── Procfile
+├── requirements.txt
+├── static/
+│   ├── styles.css
+│   ├── script.js
+│   └── assets/
+│       └── screenshot-comparator.png
+└── templates/
+└── index.html
+```
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See [LICENSE](https://github.com/RissMorisson/GithubCompareWeb/blob/main/LICENSE) for more information.
+
+## Contact
+
+[RissMorisson](https://github.com/RissMorisson)
+
+---
